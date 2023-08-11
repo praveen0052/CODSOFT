@@ -1,0 +1,47 @@
+#import required libraries
+import tkinter as tk
+from tkinter import messagebox
+
+#create the window
+A = tk.Tk()
+A.title("To-Do List App")
+
+#create and manage To-Do list
+tasks = []
+def add_task():
+    task = entry.get()
+    if task:
+        tasks.append(task)
+        update_listbox()
+
+def delete_task():
+    S_task = listbox.curselection()
+    if S_task:
+        tasks.pop(S_task[0])
+        update_listbox()
+
+def update_listbox():
+    listbox.delete(0, tk.END)
+    for task in tasks:
+        listbox.insert(tk.END, task)
+        
+#create GUI Element               
+label = tk.Label(A, text="Enter a task:")
+label.pack()
+
+entry = tk.Entry(A)
+entry.pack()
+
+add = tk.Button(A, text="Add Task", command=add_task)
+add.pack()
+
+delete = tk.Button(A, text="Delete Task", command=delete_task)
+delete.pack()
+
+listbox = tk.Listbox(A)
+listbox.pack()
+
+#Run the Application
+A.mainloop()
+
+
